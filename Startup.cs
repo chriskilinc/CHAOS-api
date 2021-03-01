@@ -16,7 +16,6 @@ namespace ChaosApi
 {
     public class Startup
     {
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,7 +26,7 @@ namespace ChaosApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICustomResponse, CustomResponse>();
+            services.AddScoped<ICustomResponseService, CustomResponseService>();
 
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
@@ -51,8 +50,7 @@ namespace ChaosApi
             app.UseRouting();
             app.UseCors("ApiCorsPolicy");
 
-
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ChaosApi.Utils
 {
-    public class CustomResponse : ICustomResponse
+    public class CustomResponseService : ICustomResponseService
     {
-        public BaseResponse CreateResponse(ResponsePayload payload, HttpContext context)
+        public BaseResponse CreateBaseResponse(CreateBaseResponsePayload payload, HttpContext context)
         {
             context.Response.StatusCode = payload.StatusCode;
             var response = new BaseResponse()
@@ -20,12 +20,11 @@ namespace ChaosApi.Utils
             };
             return response;
         }
-    }
 
-    public class ResponsePayload
-    {
-        public int StatusCode { get; set; }
-        public string Method { get; set; }
-        public string Message { get; set; }
+        public PingResponse CreatePingResponse(CreatePingResponsePayload payload, HttpContext context)
+        {
+            PingResponse pingResponse = new PingResponse(CreateBaseResponse(payload, context), payload);
+            return pingResponse;
+        }
     }
 }

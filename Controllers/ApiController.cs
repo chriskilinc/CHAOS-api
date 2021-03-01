@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using ChaosApi.Models;
 using ChaosApi.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,24 +13,25 @@ namespace ChaosApi.Controllers
     [Route("api")]
     public class ApiController : Controller
     {
-        private ICustomResponse CustomResponse;
-        public ApiController(ICustomResponse customResponse)
+        private ICustomResponseService CustomResponseService;
+        public ApiController(ICustomResponseService customResponseService)
         {
-            CustomResponse = customResponse;
+            CustomResponseService = customResponseService;
         }
 
         [HttpGet]
         [Route("ping")]
-        public IActionResult Get()
+        public IActionResult Ping()
         {
-            var response = CustomResponse.CreateResponse(new ResponsePayload()
+            PingResponse pingResponse = CustomResponseService.CreatePingResponse(new CreatePingResponsePayload()
             {
                 StatusCode = 418,
-                Message = "Hello World",
-                Method = "ping"
+                Message = "Ping Successful",
+                Method = "ping",
+                Data = new PingData() { ping = true }
             }, HttpContext);
 
-            return new JsonResult(response);
+            return new JsonResult(pingResponse);
         }
     }
 }
