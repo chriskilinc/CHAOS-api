@@ -26,5 +26,11 @@ namespace ChaosApi.Utils
             PingResponse pingResponse = new PingResponse(CreateBaseResponse(payload, context), payload);
             return pingResponse;
         }
+
+        public CommandsResponse CreateCommandsResponse(CreateCommandsResponsePayload payload, HttpContext context)
+        {
+            CommandsResponse commandsResponse = new CommandsResponse(CreateBaseResponse(payload, context), payload);
+            return commandsResponse;
+        }
     }
 }

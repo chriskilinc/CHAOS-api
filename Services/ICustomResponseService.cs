@@ -12,5 +12,6 @@ namespace ChaosApi.Utils
     {
         BaseResponse CreateBaseResponse(CreateBaseResponsePayload payload, HttpContext context);
         PingResponse CreatePingResponse(CreatePingResponsePayload payload, HttpContext context);
+        CommandsResponse CreateCommandsResponse(CreateCommandsResponsePayload payload, HttpContext context);
     }
 }

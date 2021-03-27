@@ -33,5 +33,26 @@ namespace ChaosApi.Controllers
 
             return new JsonResult(pingResponse);
         }
+
+        [HttpGet]
+        [Route("commands")]
+        public IActionResult GetCommands()
+        {
+            CommandsResponse commansResponse = CustomResponseService.CreateCommandsResponse(new CreateCommandsResponsePayload()
+            {
+                Data = new CommandsData()
+                {
+                    Commands = new List<string>() 
+                    {
+                        "ping",
+                        "commands",
+                    },
+                },
+                Message = "List of available commands",
+                Method = "commands",
+                StatusCode = 200
+            }, HttpContext);
+            return new JsonResult(commansResponse);
+        }
     }
 }
