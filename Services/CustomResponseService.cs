@@ -32,5 +32,11 @@ namespace ChaosApi.Utils
             CommandsResponse commandsResponse = new CommandsResponse(CreateBaseResponse(payload, context), payload);
             return commandsResponse;
         }
+
+        public CryptoListingResponse CreateCryptoListingResponse(CreateCryptoListingResponsePayload payload, HttpContext context)
+        {
+            CryptoListingResponse cryptoListingResponse = new CryptoListingResponse(CreateBaseResponse(payload, context), payload);
+            return cryptoListingResponse;
+        }
     }
 }
