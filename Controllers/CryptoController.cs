@@ -21,18 +21,39 @@ namespace ChaosApi.Controllers
 
         [HttpGet]
         [Route("listing/{symbol}/{fiat?}")]
-        public IActionResult getLatestListing(string symbol, string fiat = "eur")
+        public IActionResult GetLatestListing(string symbol, string fiat = "eur")
         {
-            CryptoListingResponse cryptoListingResponse = CustomResponseService.CreateCryptoListingResponse(new CreateCryptoListingResponsePayload()
-            {
-                StatusCode = 200,
-                Message = $"Successful listing for {symbol} by {fiat}",
-                Method = "ping",
-                Symbol = symbol,
-                Fiat = fiat,
-            }, HttpContext);
+            //CryptoListingResponse cryptoListingResponse = CustomResponseService.CreateCryptoListingResponse(new CreateCryptoListingResponsePayload()
+            //{
+            //    StatusCode = 200,
+            //    Message = $"Successful listing for {symbol} by {fiat}",
+            //    Method = "ping",
+            //    Symbol = symbol,
+            //    Fiat = fiat,
+            //}, HttpContext);
 
-            return new JsonResult(cryptoListingResponse);
+            //CryptoListingResponse cryptoListingResponse = new CryptoListingResponse( new BaseResponse() { }, new CreateCryptoListingResponsePayload() { })
+            //{
+            //    fiat = fiat,
+            //    message = $"Listing for {symbol} by {fiat}",
+            //    symbol = symbol,
+            //    method = "api/crypto/listing",
+            //};
+
+            //return new JsonResult(cryptoListingResponse);
+            return new JsonResult(new CryptoResponse()
+            {
+                message = "Crypto Listing",
+                method = "api/crypto/listing",
+                fiat = fiat,
+                symbol = symbol,
+            });
         }
+    }
+
+    public class CryptoResponse : BaseResponse
+    {
+        public string symbol { get; set; }
+        public string fiat { get; set; }
     }
 }

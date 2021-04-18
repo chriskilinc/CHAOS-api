@@ -18,6 +18,14 @@ namespace ChaosApi.Utils
 
     public class CommandsData
     {
-        public List<string> Commands { get; set; }
+        public List<Command> Commands { get; set; }
     }
+
+    public class Command
+    {
+        public string Route { get; set; }
+        public string Method { get; set; }
+        public string Description { get; set; }
+    }
+
 }

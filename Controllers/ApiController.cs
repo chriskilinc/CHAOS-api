@@ -42,11 +42,11 @@ namespace ChaosApi.Controllers
             {
                 Data = new CommandsData()
                 {
-                    Commands = new List<string>() 
+                    Commands = new List<Command>()
                     {
-                        "ping",
-                        "commands",
-                    },
+                        new Command { Route = "api/ping", Method = "GET", Description = "Ping the Api" },
+                        new Command { Route = "api/commands", Method = "GET", Description = "Returns a list of available commands" },
+                    }
                 },
                 Message = "List of available commands",
                 Method = "commands",
