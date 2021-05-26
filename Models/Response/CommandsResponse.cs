@@ -13,6 +13,7 @@ namespace ChaosApi.Utils
             message = baseResponse.message;
             method = baseResponse.method;
             data = payload.Data;
+            successful = true;
         }
     }
 
@@ -26,6 +27,7 @@ namespace ChaosApi.Utils
         public string Route { get; set; }
         public string Method { get; set; }
         public string Description { get; set; }
+        public string Parameters { get; set; }
     }
 
 }
