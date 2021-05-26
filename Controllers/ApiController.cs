@@ -25,7 +25,7 @@ namespace ChaosApi.Controllers
         {
             PingResponse pingResponse = CustomResponseService.CreatePingResponse(new CreatePingResponsePayload()
             {
-                StatusCode = 418,
+                StatusCode = 200,
                 Message = "Ping Successful",
                 Method = "ping",
                 Data = new PingData() { ping = true }
