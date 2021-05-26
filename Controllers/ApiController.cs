@@ -46,11 +46,12 @@ namespace ChaosApi.Controllers
                     {
                         new Command { Route = "api/ping", Method = "GET", Description = "Ping the Api" },
                         new Command { Route = "api/commands", Method = "GET", Description = "Returns a list of available commands" },
+                        new Command { Route = "api/crypto/listing", Method = "GET", Description = "Get crypto listing.", Parameters = "{symbol}" },
                     }
                 },
                 Message = "List of available commands",
                 Method = "commands",
-                StatusCode = 200
+                StatusCode = 200,
             }, HttpContext);
             return new JsonResult(commansResponse);
         }
